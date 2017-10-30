@@ -2,21 +2,121 @@
   <head>
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
     <link rel="stylesheet" href="reveal.js/css/theme/white.css">
+    <style>
+      .reveal section img[src$=svg] {
+        border: none;
+        box-shadow: none;
+      }
+      .reveal section .app {
+        text-align: left;
+        width: 60%;
+        margin: 0 auto;
+      }
+      .reveal section .app p,
+      .reveal section .app button,
+      .reveal section .app li,
+      .reveal section .app h3,
+      .reveal section .app input {
+        font-size: 24px;
+      }
+      .reveal section .app p {
+        margin: 32px 0;
+      }
+      .reveal section .app p label span {
+        font-weight: bold;
+        margin-right: 8px;
+      }
+      .reveal section .app p label input[type="text"] {
+        padding: 0 4px;
+      }
+    </style>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
+
+
+        <section>
+          <h2>Example app</h2>
+          <div class="app">
+            <p>Fetch repos for a Github user.</p>
+            <p>
+              <label>
+                <span>Username:</span>
+                <input type="text" name="username" value="example">
+              </label>
+              <button>Fetch</button>
+            </p>
+            <div>
+              <h3>Public repositories</h3>
+              <ul>
+                <li>foobar</li>
+                <li>boza</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+
+        <section>
+          <h2>jQuery</h2>
+          <ul>
+            <li class="fragment">write some HTML structure</li>
+            <li class="fragment">
+              button click handler:
+              <ul>
+                <li>get some state from DOM (input value)</li>
+                <li>send request</li>
+              </ul>
+            </li>
+            <li class="fragment">on result, generate DOM structure and replace existing subtree</li>
+          </ul>
+        </section>
+
+
+        <section>
+          <h2>React</h2>
+          <ul>
+            <li class="fragment">write some HTML structure</li>
+            <li class="fragment">
+              button click handler:
+              <ul>
+                <li>get some state from DOM (input value)</li>
+                <li>send request</li>
+              </ul>
+            </li>
+            <li class="fragment">on result, generate DOM structure and replace existing subtree</li>
+          </ul>
+        </section>
+
+
         <section>
           <div id="app-1"></div>
         </section>
+
+
         <section>
           <div id="app-2"></div>
         </section>
+
+
       </div>
     </div>
+    <script src="reveal.js/lib/js/head.min.js"></script>
     <script src="reveal.js/js/reveal.js"></script>
     <script>
-      Reveal.initialize();
+      Reveal.initialize({
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( '[data-html]' ) || !!document.querySelector( 'pre code' ) || !!document.querySelector( '[data-markdown]' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'js/loadhtmlslides.js', condition: function() { return !!document.querySelector( '[data-html]' ); } },
+          { src: 'node_modules/reveal-ga/dist/reveal-ga.min.js' }
+        ]
+      });
     </script>
     <script src="bundle.js"></script>
   </body>
